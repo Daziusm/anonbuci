@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Anonteam</title>
+    <link rel="stylesheet" href="styles.css?v=hwid-history">
+    <link rel="stylesheet" href="comments-modern.css?v=2-fixed-replies">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <script src="js/api.js"></script>
+</head>
+<body>
+
+
+    <!-- Login Page -->
+    <div id="loginPage" class="page active">
+        <div id="vanta-bg"></div>
+        <div class="login-container">
+            
+            <div class="form-container">
+                <div class="form-toggle">
+                    <button id="loginTab" class="tab-btn active">Login</button>
+                    <button id="signupTab" class="tab-btn">Sign Up</button>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <div class="input-group">
+                        <input type="text" id="loginEmail" placeholder="Email or Username" required>
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="currentColor"/>
+                                <path d="M12 14C7.58172 14 4 17.5817 4 22H20C20 17.5817 16.4183 14 12 14Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 10V8C6 5.79086 7.79086 4 10 4H14C16.2091 4 18 5.79086 18 8V10C19.1046 10 20 10.8954 20 12V20C20 21.1046 19.1046 22 18 22H6C4.89543 22 4 21.1046 4 20V12C4 10.8954 4.89543 10 6 10ZM8 8V10H16V8C16 6.89543 15.1046 6 14 6H10C8.89543 6 8 6.89543 8 8Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <button type="button" class="password-toggle" id="loginPasswordToggle">
+                            <svg class="toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Sign In</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                    
+                    <div class="form-footer">
+                        <p>Don't have an account? <a href="#" class="switch-form" data-target="signup">Create one</a></p>
+                    </div>
+                </form>
+                
+                <!-- Signup Form -->
+                <form id="signupForm" class="auth-form">
+                    <div class="input-group">
+                                                    <input type="text" id="signupName" placeholder="Username (min. 3 characters)" required>
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="currentColor"/>
+                                <path d="M12 14C7.58172 14 4 17.5817 4 22H20C20 17.5817 16.4183 14 12 14Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="signupEmail" placeholder="Email Address" required>
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="signupPassword" placeholder="Create Password" required>
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 10V8C6 5.79086 7.79086 4 10 4H14C16.2091 4 18 5.79086 18 8V10C19.1046 10 20 10.8954 20 12V20C20 21.1046 19.1046 22 18 22H6C4.89543 22 4 21.1046 4 20V12C4 10.8954 4.89543 10 6 10ZM8 8V10H16V8C16 6.89543 15.1046 6 14 6H10C8.89543 6 8 6.89543 8 8Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <button type="button" class="password-toggle" id="signupPasswordToggle">
+                            <svg class="toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="signupInviteCode" placeholder="Invitation Code (e.g. ABCD-EFGH-IJKL)" required>
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 2L2 7L10 12L15 20L21 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M15 8L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+
+                    
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">I agree to the <a href="terms-of-service.html" class="terms-link">Terms of Service</a></span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Create Account</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                    
+                    <div class="form-footer">
+                        <p>Already have an account? <a href="#" class="switch-form" data-target="login">Sign in</a></p>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="login-footer">
+                <p>© anonteam 2025</p>
+            </div>
+        </div>
+        
+        <!-- Loading Screen -->
+        <div id="loadingScreen" class="loading-screen">
+            <div class="loading-logo">
+                <img src="https://raw.githubusercontent.com/Daziusm/Daziusm/refs/heads/main/skull-cigar.png" alt="Loading" class="loading-skull">
+            </div>
+        </div>
+    </div>
+
+        <!-- Dashboard -->
+    <div id="dashboard" class="page">
+        <!-- Mobile Sidebar Toggle -->
+        <button class="mobile-sidebar-toggle" id="mobileSidebarToggle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        
+        <div class="dashboard-layout">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="banner-background" id="bannerBackground">
+                        <div class="banner-upload" id="bannerUpload">
+                            <span class="banner-upload-text"></span>
+                            <span class="banner-upload-icon"></span>
+                        </div>
+                        <img id="bannerImage" class="banner-image" style="display: none;" alt="Banner">
+                        <input type="file" id="bannerFileInput" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="user-profile">
+                        <div class="profile-avatar" id="profileAvatar">
+                            <img id="profileImage" src="" alt="Profile" onclick="document.getElementById('profileUpload').click();" onerror="this.src=getDefaultAvatar();" />
+                        </div>
+                        <input type="file" id="profileUpload" accept="image/*" style="display: none;">
+                        <div class="profile-info">
+                            <div class="username clickable" id="sidebarUsername">Loading...</div>
+                            <div class="join-info">
+                                <span>Joined: <span id="joinDate">June 26, 2025</span></span>
+                                <span>UID: <span id="sidebarUID">Loading...</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-nav">
+                    <div class="nav-item active" data-section="subscriptions">
+                        <span class="nav-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="9" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="20" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+                                <path d="M1 1H5L7.68 14.39A2 2 0 0 0 9.65 16H19.4A2 2 0 0 0 21.36 14.39L23 6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Subscriptions</span>
+                    </div>
+                    <div class="nav-item" data-section="profile">
+                        <span class="nav-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Profile</span>
+                    </div>
+                    <div class="nav-item" data-section="shoutbox">
+                        <span class="nav-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 9H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 13H14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Shoutbox</span>
+                    </div>
+                    
+                    <div class="nav-item admin-only" data-section="admin" style="display: none;">
+                        <span class="nav-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Admin Panel</span>
+                    </div>
+                    
+                    <div class="nav-item" data-section="security">
+                        <span class="nav-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Security</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-footer">
+                    <div class="footer-links">
+                                    <a href="terms-of-service.html" class="footer-link">Terms of Service</a>
+            <a href="privacy-policy.html" class="footer-link">Privacy</a>
+            <a href="refund-policy.html" class="footer-link">Refund Policy</a>
+                    </div>
+                    <div class="copyright">
+                        © 2023 – 2025 @anonteam @synant
+                    </div>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Subscriptions View -->
+                <div id="subscriptionsView" class="content-view active">
+                    <!-- Hardware ID Reset Section -->
+                    <div class="content-section">
+                        <div class="section-header">
+                            <span class="section-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </span>
+                            <h2>Hardware ID Reset</h2>
+                        </div>
+                    <p class="section-subtitle">Available every 2 weeks</p>
+                    
+                    <div class="hwid-reset-form">
+                        <input type="text" class="reason-input" placeholder="(Optional) Reason for reset" />
+                        <button class="reset-btn" id="hwidResetBtn">
+                            <span class="btn-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M23 20V14H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14L18.36 18.36A9 9 0 0 1 3.51 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <span>Reset</span>
+                        </button>
+                    </div>
+                </div>
+
+                    <!-- Key Activation Section -->
+                    <div class="content-section">
+                        <div class="section-header">
+                            <span class="section-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                                    <path d="M7 11V7C7 4.79086 9.23858 3 12 3C14.7614 3 17 4.79086 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </span>
+                            <h2>Key Activation</h2>
+                        </div>
+                    <p class="section-subtitle">Activate your key</p>
+                    
+                    <div class="key-activation-form">
+                        <input type="text" class="key-input redeem-input" placeholder="Enter your key code" />
+                        <button class="activate-btn redeem-btn">
+                            <span class="btn-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                                    <path d="M7 11V7C7 4.79086 9.23858 3 12 3C14.7614 3 17 4.79086 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </span>
+                            <span>Activate</span>
+                        </button>
+                    </div>
+                </div>
+
+                    <!-- Subscriptions Section -->
+                    <div class="content-section">
+                        <div class="section-header">
+                            <span class="section-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="20" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M1 1H5L7.68 14.39A2 2 0 0 0 9.65 16H19.4A2 2 0 0 0 21.36 14.39L23 6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <h2>Subscriptions</h2>
+                        </div>
+                    <p class="section-subtitle">Feel the excellence in a few clicks</p>
+                    
+                    <div class="subscriptions-list">
+                        <div class="subscription-item" data-cheat="compkiller">
+                            <div class="sub-info">
+                                <div class="cheat-header">
+                                    <div class="sub-icon">
+                                        <img src="./images/cheats/compkiller.png" alt="CK" onerror="console.error('Failed to load compkiller icon'); this.style.display='none';" />
+                                    </div>
+                                    <div class="sub-name">[CS:2] Compkiller</div>
+                                </div>
+                                <div class="sub-status inactive">No active subscription</div>
+                            </div>
+                            <div class="sub-action">
+                                <button class="shop-btn purchase-btn" data-cheat="compkiller">
+                                    <span class="shop-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 2L3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6L18 2H6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M16 10C16 12.2091 14.2091 14 12 14C9.79086 14 8 12.2091 8 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    <span>Purchase</span>
+                                </button>
+                                <span class="lightning-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="currentColor"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="subscription-item" data-cheat="neverlose">
+                            <div class="sub-info">
+                                <div class="cheat-header">
+                                    <div class="sub-icon">
+                                        <img src="./images/cheats/neverlose.png" alt="NL" onerror="console.error('Failed to load neverlose icon'); this.style.display='none';" />
+                                    </div>
+                                    <div class="sub-name">[CS:2] Neverlose</div>
+                                </div>
+                                <div class="sub-status inactive">No active subscription</div>
+                            </div>
+                            <div class="sub-action">
+                                <button class="shop-btn purchase-btn" data-cheat="neverlose">
+                                    <span class="shop-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 2L3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6L18 2H6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M16 10C16 12.2091 14.2091 14 12 14C9.79086 14 8 12.2091 8 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    <span>Purchase</span>
+                                </button>
+                                <span class="lightning-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="currentColor"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="subscription-item" data-cheat="onetap">
+                            <div class="sub-info">
+                                <div class="cheat-header">
+                                    <div class="sub-icon">
+                                        <img src="./images/cheats/onetap.png" alt="OT" onerror="console.error('Failed to load onetap icon'); this.style.display='none';" />
+                                    </div>
+                                    <div class="sub-name">[CS:GO] Onetap</div>
+                                </div>
+                                <div class="sub-status inactive">No active subscription</div>
+                            </div>
+                            <div class="sub-action">
+                            <button class="shop-btn purchase-btn" data-cheat="onetap">
+                                    <span class="shop-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 2L3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6L18 2H6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M16 10C16 12.2091 14.2091 14 12 14C9.79086 14 8 12.2091 8 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                <span>Purchase</span>
+                            </button>
+                                <span class="lightning-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="currentColor"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="subscription-item" data-cheat="fatality">
+                            <div class="sub-info">
+                                <div class="cheat-header">
+                                    <div class="sub-icon">
+                                        <img src="./images/cheats/fatality.png" alt="FT" onerror="console.error('Failed to load fatality icon'); this.style.display='none';" />
+                                    </div>
+                                    <div class="sub-name">[CS:2] Fatality</div>
+                                </div>
+                                <div class="sub-status inactive">No active subscription</div>
+                            </div>
+                            <div class="sub-action">
+                                <button class="shop-btn purchase-btn" data-cheat="fatality">
+                                    <span class="shop-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 2L3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6L18 2H6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M16 10C16 12.2091 14.2091 14 12 14C9.79086 14 8 12.2091 8 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    <span>Purchase</span>
+                                </button>
+                                <span class="lightning-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="currentColor"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <!-- Profile View -->
+                <div id="profileView" class="content-view">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <span class="section-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <h2>User Profile</h2>
+                        </div>
+                        <p class="section-subtitle">View your profile information</p>
+                        
+                        <!-- Profile Header with Banner and Avatar -->
+                        <div class="profile-header-section" id="profileHeaderSection">
+                            <div class="banner-placeholder">
+                            </div>
+                            <div class="profile-info-content">
+                                <div class="profile-avatar-large">
+                                    <img id="profileAvatarLarge" src="" alt="Profile Avatar" onerror="this.src=getDefaultAvatar();" />
+                                </div>
+                                <div class="profile-details">
+                                    <h3 id="profileUsername">admin.1</h3>
+                                    <div class="profile-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-label">Joined:</span>
+                                            <span class="stat-value" id="profileJoinDate">June 27, 2025</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-label">UID:</span>
+                                            <span class="stat-value" id="profileUID">3</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-label">Last Seen:</span>
+                                            <span class="stat-value" id="lastSeen">Online now</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Profile Activity Section -->
+                        <div class="profile-activity">
+                            <!-- Activity Tabs -->
+                            <div class="activity-tabs">
+                                <button class="activity-tab active" data-tab="overview">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                        <line x1="9" y1="9" x2="15" y2="9" stroke="currentColor" stroke-width="2"/>
+                                        <line x1="9" y1="13" x2="15" y2="13" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                    Overview
+                                </button>
+                                <button class="activity-tab" data-tab="comments">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Comments
+                                    <span class="comments-count" id="commentsCount">0</span>
+                                </button>
+                            </div>
+                            
+                            <!-- Activity Content -->
+                            <div class="activity-content">
+                                <!-- Overview Panel -->
+                                <div class="activity-panel active" id="overviewPanel">
+                                    <div class="profile-overview">
+                                        <div class="overview-section">
+                                            <h4>
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Account Details
+                                            </h4>
+                                            <div class="overview-item">
+                                                <span class="overview-label">Status</span>
+                                                <span class="overview-value">
+                                                    <span class="status-badge online">Online</span>
+                                                </span>
+                                            </div>
+                                            <div class="overview-item">
+                                                <span class="overview-label">Account Type</span>
+                                                <span class="overview-value">
+                                                    <span class="status-badge premium">Premium</span>
+                                                </span>
+                                            </div>
+                                            <div class="overview-item">
+                                                <span class="overview-label">Total Comments</span>
+                                                <span class="overview-value" id="totalComments">0</span>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                                
+                                <!-- Comments Panel -->
+                                <div class="activity-panel" id="commentsPanel">
+                                    <div class="comments-header">
+                                        <h3 class="comments-title">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            Discussion
+                                        </h3>
+                                    </div>
+                                    
+                                    <!-- Add Comment Form -->
+                                    <div class="add-comment-form">
+                                        <div class="comment-compose">
+                                            <div class="comment-input-row">
+                                                <img class="comment-avatar" id="commentUserAvatar" src="" alt="Your Avatar" onerror="this.src=getDefaultAvatar();" />
+                                                <div class="comment-input-area">
+                                                    <textarea id="commentInput" placeholder="Write a comment..."></textarea>
+                                                    <div class="comment-actions">
+                                                        <button class="post-comment-btn" id="postCommentBtn">
+                                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="currentColor"/>
+                                                            </svg>
+                                                            Post
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Comments List -->
+                                    <div class="comments-list" id="commentsList">
+                                        <div class="no-comments">
+                                            <div class="no-comments-icon">💬</div>
+                                            <h4>No comments yet</h4>
+                                            <p>Be the first to leave a comment on this profile!</p>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <!-- Shoutbox View -->
+            <div id="shoutboxView" class="content-view">
+                <div class="content-section">
+                    <div class="section-header">
+                        <span class="section-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <h2>Shoutbox</h2>
+                    </div>
+                    <p class="section-subtitle">Community chat - messages clear daily at midnight</p>
+                    
+                    <div class="shoutbox-container">
+                        <!-- Shoutbox Messages -->
+                        <div class="shoutbox-messages" id="shoutboxMessages">
+                            <div class="no-shouts">
+                                <div class="no-shouts-icon">💬</div>
+                                <h4>No messages yet</h4>
+                                <p>Be the first to send a message in the shoutbox!</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Shoutbox Input -->
+                        <div class="shoutbox-input-container">
+                            <div class="shoutbox-input-row">
+                                <img class="shoutbox-avatar" id="shoutboxUserAvatar" src="" alt="Your Avatar" onerror="this.src=getDefaultAvatar();" />
+                                <div class="shoutbox-input-area">
+                                    <input type="text" id="shoutboxInput" placeholder="Type a message..." maxlength="200" />
+                                    <div class="shoutbox-actions">
+                                        <span class="char-count" id="charCount">0/200</span>
+                                        <button class="send-shout-btn" id="sendShoutBtn">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <!-- Security View -->
+                <div id="securityView" class="content-view">
+                    <div class="content-section">
+                        <div class="section-header">
+                            <span class="section-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <h2>Security Settings</h2>
+                        </div>
+                        <p class="section-subtitle">Change your account password</p>
+                        
+                        <div class="security-form">
+                            <div class="input-group">
+                                <input type="password" id="oldPassword" placeholder="Old Password" required>
+                                <span class="input-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 10V8C6 5.79086 7.79086 4 10 4H14C16.2091 4 18 5.79086 18 8V10C19.1046 10 20 10.8954 20 12V20C20 21.1046 19.1046 22 18 22H6C4.89543 22 4 21.1046 4 20V12C4 10.8954 4.89543 10 6 10ZM8 8V10H16V8C16 6.89543 15.1046 6 14 6H10C8.89543 6 8 6.89543 8 8Z" fill="currentColor"/>
+                                    </svg>
+                                </span>
+                                <button type="button" class="password-toggle" id="oldPasswordToggle">
+                                    <svg class="toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <div class="input-group">
+                                <input type="password" id="newPassword" placeholder="New Password" required>
+                                <span class="input-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 10V8C6 5.79086 7.79086 4 10 4H14C16.2091 4 18 5.79086 18 8V10C19.1046 10 20 10.8954 20 12V20C20 21.1046 19.1046 22 18 22H6C4.89543 22 4 21.1046 4 20V12C4 10.8954 4.89543 10 6 10ZM8 8V10H16V8C16 6.89543 15.1046 6 14 6H10C8.89543 6 8 6.89543 8 8Z" fill="currentColor"/>
+                                    </svg>
+                                </span>
+                                <button type="button" class="password-toggle" id="newPasswordToggle">
+                                    <svg class="toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <div class="input-group">
+                                <input type="password" id="confirmPassword" placeholder="Confirm New Password" required>
+                                <span class="input-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 10V8C6 5.79086 7.79086 4 10 4H14C16.2091 4 18 5.79086 18 8V10C19.1046 10 20 10.8954 20 12V20C20 21.1046 19.1046 22 18 22H6C4.89543 22 4 21.1046 4 20V12C4 10.8954 4.89543 10 6 10ZM8 8V10H16V8C16 6.89543 15.1046 6 14 6H10C8.89543 6 8 6.89543 8 8Z" fill="currentColor"/>
+                                    </svg>
+                                </span>
+                                <button type="button" class="password-toggle" id="confirmPasswordToggle">
+                                    <svg class="toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <button class="change-password-btn" id="changePasswordBtn">
+                                <span class="btn-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                <span>Change Password</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Profile Image Management Section -->
+                    <div class="content-section">
+                        <div class="section-header">
+                            <span class="section-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </span>
+                            <h2>Profile Image Management</h2>
+                        </div>
+                        <p class="section-subtitle">Remove your profile picture or banner image</p>
+                        
+                        <div class="image-management-form">
+                            <div class="image-action-row">
+                                <button class="remove-image-btn" id="removePfpBtn">
+                                    <span class="btn-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                            <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
+                                            <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </span>
+                                    <span>Remove Profile Picture</span>
+                                </button>
+                                
+                                <button class="remove-image-btn" id="removeBannerBtn">
+                                    <span class="btn-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                            <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
+                                            <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </span>
+                                    <span>Remove Banner</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admin Panel View -->
+            <div id="adminView" class="content-view admin-only" style="display: none;">
+                <div class="content-section">
+                    <div class="section-header">
+                        <span class="section-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <h2>Admin Panel</h2>
+                    </div>
+                    <p class="section-subtitle">User management, bans, subscriptions, and role changes</p>
+                    
+                    <!-- Admin Tabs -->
+                    <div class="admin-tabs">
+                        <div class="admin-tab active" data-tab="users">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            User Management
+                        </div>
+                        <div class="admin-tab" data-tab="bans">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M4.93 4.93L19.07 19.07" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Ban Management
+                        </div>
+
+                        <div class="admin-tab" data-tab="keys">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                                <path d="M7 11V7C7 4.79086 9.23858 3 12 3C14.7614 3 17 4.79086 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Key Generation
+                        </div>
+                        <div class="admin-tab" data-tab="invites">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 2L2 7L10 12L15 20L21 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M15 8L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Invite Creation
+                        </div>
+                        <div class="admin-tab" data-tab="activity">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 20V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M18 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6 20V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Activity Logs
+                        </div>
+                        <div class="admin-tab" data-tab="loaders">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Product Management
+                        </div>
+                        
+                        <div class="admin-tab" data-tab="troll">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Troll Features
+                        </div>
+                    </div>
+                    
+                    <!-- User Management Panel -->
+                    <div class="admin-panel active" id="usersPanel">
+                        <div class="admin-section">
+                            <h3>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                User Management
+                            </h3>
+                            
+                            <!-- User Search & Actions -->
+                            <div class="admin-user-controls">
+                                <div class="user-search-row">
+                                    <input type="text" id="userSearchInput" placeholder="Search users by username, email, or Discord ID..." class="admin-input search-input">
+                                    <button id="searchUsersBtn" class="admin-btn search-btn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Search
+                                    </button>
+                                    <button id="refreshUsersBtn" class="admin-btn refresh-btn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M23 20V14H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14L18.36 18.36A9 9 0 0 1 3.51 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Refresh
+                                    </button>
+                                </div>
+                            </div>
+                            
+
+                            
+                            <div class="users-list" id="adminUsersList">
+                                <!-- Users will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ban Management Panel -->
+                    <div class="admin-panel" id="bansPanel">
+                        <div class="admin-section">
+                            <h3>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M4.93 4.93L19.07 19.07" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Ban Management
+                            </h3>
+                            <div class="banned-users-list" id="bannedUsersList">
+                                <!-- Banned users will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Products Panel Removed -->
+                    <div class="admin-panel" id="productsPanel" style="display: none !important;">
+                        <div class="admin-section">
+                            <h3>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="2" y="2" width="20" height="20" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M8 2V6M16 2V6M2 10H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="8" cy="14" r="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M14 14H20M14 18H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Manage Products
+                            </h3>
+                            
+                            <!-- Global Product Controls -->
+                            <div class="global-controls-section">
+                                <h4>Global Product Management</h4>
+                                <div class="global-freeze-controls">
+                                    <select id="globalProductSelect" class="admin-select">
+                                        <option value="">Select Product</option>
+                                        <option value="compkiller">CS:2 Compkiller</option>
+                                        <option value="neverlose">CS:2 Neverlose</option>
+                                        <option value="onetap">CS:GO Onetap</option>
+                                        <option value="fatality">CS:2 Fatality</option>
+                                    </select>
+                                    <button id="globalFreezeBtn" class="admin-btn freeze-btn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2.5 8L8 2.5M8 8L2.5 2.5M22 8V16C22 17.1046 21.1046 18 20 18H4C2.89543 18 2 17.1046 2 16V8C2 6.89543 2.89543 6 4 6H20C21.1046 6 22 6.89543 22 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Freeze Globally
+                                    </button>
+                                    <button id="globalUnfreezeBtn" class="admin-btn unfreeze-btn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M22 8V16C22 17.1046 21.1046 18 20 18H4C2.89543 18 2 17.1046 2 16V8C2 6.89543 2.89543 6 4 6H20C21.1046 6 22 6.89543 22 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M12 12L16 8M12 12L8 16M12 12L8 8M12 12L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Unfreeze
+                                    </button>
+                                    <button id="globalAlphaOnlyBtn" class="admin-btn alpha-btn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 2L3.09 8.26L4 21L12 17L20 21L20.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Alpha Only
+                                    </button>
+                                    <button id="globalRemoveAlphaBtn" class="admin-btn remove-alpha-btn" style="display: none;">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 2L3.09 8.26L4 21L12 17L20 21L20.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M6 9L18 21M18 9L6 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Remove Alpha Only
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Debug Tools -->
+                            <div class="debug-controls-section" style="margin-top: 20px;">
+                                <h4 style="color: #ff6b6b; margin-bottom: 15px;"><i class="fas fa-bug"></i> Debug Tools</h4>
+                                <div class="debug-buttons" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                    <button class="admin-btn" onclick="debugProductStates()" style="background: #4ecdc4;">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Debug States
+                                    </button>
+                                    <button class="admin-btn" onclick="forceSync()" style="background: #45b7d1;">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M23 4V10H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M1 20V14H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M22.88 14.36A9 9 0 0 1 8.51 19.36L23 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Force Sync
+                                    </button>
+                                    <button class="admin-btn" onclick="resetProductStates()" style="background: #ff6b6b;">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 6H5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M8 6V4C8 3.44772 8.44772 3 9 3H15C15.5523 3 16 3.44772 16 4V6M19 6V20C19 20.5523 18.5523 21 18 21H6C5.44772 21 5 20.5523 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Reset All
+                                    </button>
+                                    <button class="admin-btn" onclick="testSync()" style="background: #f39c12;">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M9 11H1L3 9L1 7H9L11 9L13 7H21L19 9L21 11H13L11 9L9 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Test Sync
+                                    </button>
+                                    <button class="admin-btn" onclick="reloadFromDatabase()" style="background: #9b59b6;">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 7V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M3 11H13M13 11L9 7M13 11L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Reload from DB
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Product Status Overview -->
+                            <div class="product-status-section">
+                                <h4>Product Status Overview</h4>
+                                <div class="products-grid" id="productsStatusGrid">
+                                    <div class="product-card" data-product="compkiller">
+                                        <div class="product-header">
+                                            <h5>CS:2 Compkiller</h5>
+                                            <div class="status-badge active" id="compkillerStatus">ACTIVE</div>
+                                        </div>
+                                        <div class="product-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-label">Active Users:</span>
+                                                <span class="stat-value" id="compkillerActiveUsers">0</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-label">Total Subs:</span>
+                                                <span class="stat-value" id="compkillerTotalSubs">0</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-actions">
+                                            <button class="action-btn freeze-product-btn" data-product="compkiller">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M2.5 8L8 2.5M8 8L2.5 2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Freeze
+                                            </button>
+                                            <button class="action-btn unfreeze-product-btn" data-product="compkiller" style="display: none;">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 12L16 8M12 12L8 16M12 12L8 8M12 12L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Unfreeze
+                                            </button>
+                                            <button class="action-btn extend-product-btn" data-product="compkiller">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Extend All
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="product-card" data-product="neverlose">
+                                        <div class="product-header">
+                                            <h5>CS:2 Neverlose</h5>
+                                            <div class="status-badge active" id="neverloseStatus">ACTIVE</div>
+                                        </div>
+                                        <div class="product-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-label">Active Users:</span>
+                                                <span class="stat-value" id="neverloseActiveUsers">0</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-label">Total Subs:</span>
+                                                <span class="stat-value" id="neverloseTotalSubs">0</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-actions">
+                                            <button class="action-btn freeze-product-btn" data-product="neverlose">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M2.5 8L8 2.5M8 8L2.5 2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Freeze
+                                            </button>
+                                            <button class="action-btn unfreeze-product-btn" data-product="neverlose" style="display: none;">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 12L16 8M12 12L8 16M12 12L8 8M12 12L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Unfreeze
+                                            </button>
+                                            <button class="action-btn extend-product-btn" data-product="neverlose">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Extend All
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="product-card" data-product="onetap">
+                                        <div class="product-header">
+                                            <h5>CS:GO Onetap</h5>
+                                            <div class="status-badge frozen" id="onetapStatus">FROZEN</div>
+                                        </div>
+                                        <div class="product-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-label">Active Users:</span>
+                                                <span class="stat-value" id="onetapActiveUsers">0</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-label">Total Subs:</span>
+                                                <span class="stat-value" id="onetapTotalSubs">0</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-actions">
+                                            <button class="action-btn unfreeze-product-btn" data-product="onetap">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 12L16 8M12 12L8 16M12 12L8 8M12 12L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Unfreeze
+                                            </button>
+                                            <button class="action-btn extend-product-btn" data-product="onetap">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Extend All
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="product-card" data-product="fatality">
+                                        <div class="product-header">
+                                            <h5>CS:2 Fatality</h5>
+                                            <div class="status-badge active" id="fatalityStatus">ACTIVE</div>
+                                        </div>
+                                        <div class="product-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-label">Active Users:</span>
+                                                <span class="stat-value" id="fatalityActiveUsers">0</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-label">Total Subs:</span>
+                                                <span class="stat-value" id="fatalityTotalSubs">0</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-actions">
+                                            <button class="action-btn freeze-product-btn" data-product="fatality">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M2.5 8L8 2.5M8 8L2.5 2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Freeze
+                                            </button>
+                                            <button class="action-btn unfreeze-product-btn" data-product="fatality" style="display: none;">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 12L16 8M12 12L8 16M12 12L8 8M12 12L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Unfreeze
+                                            </button>
+                                            <button class="action-btn extend-product-btn" data-product="fatality">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Extend All
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Bulk Extension Modal -->
+                            <div id="bulkExtensionModal" class="bulk-extension-modal" style="display: none;">
+                                <div class="modal-overlay"></div>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4>Bulk Extend Subscriptions</h4>
+                                        <button class="modal-close" id="closeBulkModal">×</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Extend all active subscriptions for <strong id="bulkProductName">Product</strong></p>
+                                        <div class="bulk-controls">
+                                            <input type="number" id="bulkExtendDays" placeholder="Days to extend" min="1" max="365" class="admin-input">
+                                            <button id="confirmBulkExtend" class="admin-btn grant-btn">Confirm Extension</button>
+                                        </div>
+                                        <div class="affected-users" id="affectedUsersList">
+                                            <!-- List of users who will be affected -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Key Generation Panel -->
+                    <div class="admin-panel" id="keysPanel">
+                        <div class="admin-section">
+                            <h3>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                                    <path d="M7 11V7C7 4.79086 9.23858 3 12 3C14.7614 3 17 4.79086 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                Key Generation
+                            </h3>
+                            <div class="admin-key-form">
+                                <div class="form-row">
+                                    <select id="keyCheatSelect" class="admin-select">
+                                        <option value="">Select Cheat</option>
+                                        <option value="compkiller">CS:2 Compkiller</option>
+                                        <option value="neverlose">CS:2 Neverlose</option>
+                                        <option value="onetap">CS:GO Onetap</option>
+                                        <option value="fatality">CS:2 Fatality</option>
+                                    </select>
+                                    <select id="keyDurationSelect" class="admin-select">
+                                        <option value="">Select Duration</option>
+                                        <option value="1">1 Day</option>
+                                        <option value="3">3 Days</option>
+                                        <option value="7">1 Week</option>
+                                        <option value="14">2 Weeks</option>
+                                        <option value="30">1 Month</option>
+                                        <option value="90">3 Months</option>
+                                        <option value="180">6 Months</option>
+                                        <option value="365">1 Year</option>
+                                    </select>
+                                    <input type="number" id="keyCount" placeholder="Number of keys" min="1" max="50" class="admin-input" value="1">
+                                    <button id="generateKeysBtn" class="admin-btn generate-btn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                            <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                                        </svg>
+                                        Generate Keys
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="key-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Total Generated:</span>
+                                    <span class="stat-value" id="totalKeysCount">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Used Keys:</span>
+                                    <span class="stat-value" id="usedKeysCount">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Available Keys:</span>
+                                    <span class="stat-value" id="availableKeysCount">0</span>
+                                </div>
+                            </div>
+                            
+                            <div class="generated-keys-section">
+                                <div class="keys-header">
+                                    <h4>Recently Generated Keys</h4>
+                                    <button id="refreshKeysBtn" class="admin-btn refresh-btn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M23 20V14H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14L18.36 18.36A9 9 0 0 1 3.51 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Refresh
+                                    </button>
+                                </div>
+                                <div class="generated-keys-list" id="generatedKeysList">
+                                    <!-- Generated keys will appear here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Invite Creation Panel -->
+                    <div class="admin-panel" id="invitesPanel">
+                        <div class="admin-section">
+                            <h3>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 2L2 7L10 12L15 20L21 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15 8L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Invite Creation
+                            </h3>
+                            <div class="admin-invite-form">
+                                <div class="form-row">
+                                    <input type="number" id="inviteCount" placeholder="Number of invites" min="1" max="100" class="admin-input" value="1">
+                                    <button id="createInvitesBtn" class="admin-btn create-btn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Create Invites
+                                    </button>
+                                </div>
+                                <div class="invite-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Active Codes:</span>
+                                        <span class="stat-value" id="activeInviteCount">0</span>
+                            </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Used Codes:</span>
+                                        <span class="stat-value" id="usedInviteCount">0</span>
+                        </div>
+                    </div>
+                                <div class="invite-codes-list" id="inviteCodesList">
+                                    <!-- Generated invite codes will appear here -->
+                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity Logs Panel -->
+                    <div class="admin-panel" id="activityPanel">
+                        <div class="admin-section">
+                            <h3>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 20V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M18 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6 20V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Activity Logs
+                            </h3>
+                            <div class="activity-filters">
+                                <select id="activityFilter" class="admin-select">
+                                    <option value="all">All Activities</option>
+                                    <option value="hwid">HWID Changes</option>
+                                    <option value="password">Password Changes</option>
+                                    <option value="login">Login Activity</option>
+                                    <option value="registration">User Registration</option>
+                                    <option value="ban">Ban Activity</option>
+                                    <option value="subscription">Subscription Management</option>
+                                    <option value="key">Key Generation</option>
+                                </select>
+                                <button id="refreshActivityBtn" class="admin-btn refresh-btn">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M23 20V14H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14L18.36 18.36A9 9 0 0 1 3.51 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Refresh
+                                </button>
+                            </div>
+                            <div class="activity-logs-list" id="activityLogsList">
+                                <!-- Activity logs will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Management Panel -->
+                    <div class="admin-panel" id="loadersPanel">
+                        <div class="admin-section">
+                            <h3>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Product Management
+                            </h3>
+                            
+                            <!-- Cheat Management Section -->
+                            <div class="cheats-management-section">
+                                <h4>Manage Loaders by Cheat</h4>
+                                <div class="upload-info">
+                                    <p><strong>Requirements:</strong> Only .exe files up to 50MB are allowed</p>
+                                    <p><strong>Note:</strong> Uploading a new loader will replace the existing one for that cheat</p>
+                                </div>
+                                <div class="cheats-grid" id="cheatsGrid">
+                                    <!-- Cheat cards will be populated here -->
+                                </div>
+                            </div>
+                            
+                            <!-- Current Loaders Section -->
+                            <div class="current-loaders-section">
+                                <h4>Current Loaders</h4>
+                                <div class="loaders-controls">
+                                    <button id="refreshLoadersBtn" class="admin-btn refresh-btn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M23 20V14H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14L18.36 18.36A9 9 0 0 1 3.51 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Refresh
+                                    </button>
+                                </div>
+                                <div class="loaders-list" id="loadersList">
+                                    <!-- Loaders will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Troll Features Panel -->
+                    <div class="admin-panel" id="trollPanel">
+                        <div class="admin-section">
+                            <h3>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Troll Features
+                            </h3>
+                            
+                            <div class="troll-section">
+                                <h4>🎭 User Prank Tools</h4>
+                                <div class="troll-description">
+                                    <p>Have some fun with your users! These features are harmless pranks that won't damage anything.</p>
+                                </div>
+                                
+                                <!-- Flashbang Feature -->
+                                <div class="troll-feature">
+                                    <div class="feature-info">
+                                        <h5>⚡ Targeted Flashbang</h5>
+                                        <p>Covers a specific user's screen with a bright white flash and explosion sound effect. Choose your target wisely!</p>
+                                    </div>
+                                    <div class="feature-controls">
+                                        <div class="flashbang-controls">
+                                            <select id="flashbangTarget" class="admin-select flashbang-select">
+                                                <!-- User list will be populated here -->
+                                            </select>
+                                            <button id="flashbangBtn" class="admin-btn troll-btn">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                                    <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                                                </svg>
+                                                DEPLOY FLASHBANG!
+                                            </button>
+                                        </div>
+                                        <div class="flashbang-status" id="flashbangStatus">
+                                            Select a target to flashbang
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Job Application Feature -->
+                                <div class="troll-feature">
+                                    <div class="feature-info">
+                                        <h5>💼 Job Application Surprise</h5>
+                                        <p>Shows a job application image to users. Perfect for those who need career advice! Select a target and watch the magic happen.</p>
+                                    </div>
+                                    <div class="feature-controls">
+                                        <div class="flashbang-controls">
+                                            <select id="jobAppTarget" class="admin-select flashbang-select">
+                                                <!-- User list will be populated here -->
+                                            </select>
+                                            <button id="jobAppBtn" class="admin-btn troll-btn job-btn">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M14 6V2C14 1.44772 13.5523 1 13 1H11C10.4477 1 10 1.44772 10 2V6" stroke="currentColor" stroke-width="2"/>
+                                                    <path d="M3 6H21V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V6Z" stroke="currentColor" stroke-width="2"/>
+                                                </svg>
+                                                SEND JOB APP!
+                                            </button>
+                                        </div>
+                                        <div class="flashbang-status" id="jobAppStatus">
+                                            Select a target to surprise
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- More troll features can be added here -->
+                                <div class="troll-feature">
+                                    <div class="feature-info">
+                                        <h5> o.O Coming Soon</h5>
+                                        <p>More troll features will be added here. Got ideas? Let the Daziusm know!</p>
+                                    </div>
+                                    <div class="feature-controls">
+                                        <button class="admin-btn" disabled style="opacity: 0.5;">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                                <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="2"/>
+                                            </svg>
+                                            Feature Coming Soon
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="troll-warning">
+                                    <strong>⚠️ Use Responsibly:</strong> These features are for entertainment purposes. Don't overuse them or users might get annoyed!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Old purchase popup removed - now using checkout.html -->
+
+    <!-- Flashbang Overlay -->
+    <div id="flashbangOverlay" class="flashbang-overlay"></div>
+    
+    <!-- Job Application Overlay -->
+    <div id="jobOverlay" class="job-overlay">
+        <img id="jobImage" class="job-image" src="images/job/job.jpg" alt="Job Application" />
+    </div>
+
+    <!-- Ban Popup Modal -->
+    <div id="banPopup" class="ban-popup" style="display: none;">
+        <div class="ban-popup-overlay"></div>
+        <div class="ban-popup-content">
+            <div class="ban-popup-header">
+                <div class="ban-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M4.93 4.93L19.07 19.07" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h2>Account Banned</h2>
+            </div>
+            
+            <div class="ban-popup-body">
+                <div class="ban-reason">
+                    <h3>Reason:</h3>
+                    <p id="banReasonText">Loading...</p>
+                </div>
+                
+                <div class="ban-details">
+                    <div class="ban-detail-item">
+                        <span class="label">Banned by:</span>
+                        <span class="value" id="bannedByText">Loading...</span>
+                    </div>
+                    <div class="ban-detail-item">
+                        <span class="label">Ban date:</span>
+                        <span class="value" id="banDateText">Loading...</span>
+                    </div>
+                </div>
+                
+                <div class="countdown-section">
+                    <div class="countdown-text">
+                        You will be automatically logged out in:
+                    </div>
+                    <div class="countdown-timer" id="countdownTimer">60</div>
+                    <div class="countdown-label">seconds</div>
+                </div>
+            </div>
+            
+            <div class="ban-popup-footer">
+                <button id="banLogoutBtn" class="ban-logout-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="16,17 21,12 16,7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Logout Now
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="js/frontend-integration.js"></script>
+    <script src="js/loader-management.js"></script>
+    <script src="script.js?v=keys-debug-v4"></script>
+</body>
+</html> 

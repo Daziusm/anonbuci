@@ -1,0 +1,366 @@
+/* SIMPLE BASIC COMMENT SYSTEM */
+
+/* Regular comments - simple and clean */
+.comment-item {
+    padding: 12px 0 !important;
+    margin-bottom: 16px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    border: none !important;
+    transition: none !important;
+}
+
+.comment-item:hover {
+    background: transparent !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    transform: none !important;
+}
+
+/* Reply comments - simple indentation only */
+#commentsList .comment-item[data-parent-id],
+#commentsList .comment-item.reply-comment,
+.comment-item[data-parent-id],
+.comment-item.reply-comment {
+    margin-left: 40px !important;
+    padding: 12px 0 !important;
+    margin-bottom: 16px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: transparent !important;
+    position: relative !important;
+}
+
+/* Reply arrow icon */
+#commentsList .comment-item[data-parent-id]:before,
+#commentsList .comment-item.reply-comment:before,
+.comment-item[data-parent-id]:before,
+.comment-item.reply-comment:before {
+    content: "→" !important;
+    position: absolute !important;
+    left: -20px !important;
+    top: 20px !important;
+    color: #666 !important;
+    font-size: 14px !important;
+    font-weight: normal !important;
+}
+
+/* Comment content */
+.comment-content {
+    display: block !important;
+    gap: 0 !important;
+}
+
+/* Comment header - user info */
+.comment-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-bottom: 8px !important;
+    position: relative !important;
+}
+
+/* User avatar */
+.comment-avatar {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    object-fit: cover !important;
+}
+
+/* Reply avatars - normal size, no special styling */
+#commentsList .comment-item[data-parent-id] .comment-avatar,
+.comment-item.reply-comment .comment-avatar {
+    width: 28px !important;
+    height: 28px !important;
+}
+
+/* User info container */
+.comment-info {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex: 1 !important;
+}
+
+/* Username */
+.comment-author {
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    color: #ffffff !important;
+}
+
+/* FORCE ADMIN USERNAME RED */
+.comment-item[data-account-type="admin"] .comment-author {
+    color: #ef4444 !important;
+}
+
+/* Time */
+.comment-time {
+    color: #888 !important;
+    font-size: 12px !important;
+}
+
+/* Badges - Simple */
+.shout-badge {
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* YOU badge */
+.shout-badge:not(.account-type-badge) {
+    background: #22c55e !important;
+    color: #000000 !important;
+    border: 1px solid #16a34a !important;
+    font-weight: 700 !important;
+}
+
+/* Account type badges */
+.account-type-badge {
+    background: #374151 !important;
+    color: #ffffff !important;
+    border: 1px solid #4b5563 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* FORCE ADMIN BADGE RED */
+.comment-item[data-account-type="admin"] .account-type-badge,
+.shout-item[data-account-type="admin"] .account-type-badge {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+    border: 1px solid #dc2626 !important;
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.4) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* FORCE FEMBOY BADGE PINK */
+.comment-item[data-account-type="femboy"] .account-type-badge,
+.shout-item[data-account-type="femboy"] .account-type-badge {
+    background: linear-gradient(135deg, #ec4899, #db2777) !important;
+    color: #ffffff !important;
+    border: 1px solid #db2777 !important;
+    box-shadow: 0 2px 4px rgba(236, 72, 153, 0.4) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* FORCE OWNER BADGE GOLD */
+.comment-item[data-account-type="owner"] .account-type-badge,
+.shout-item[data-account-type="owner"] .account-type-badge {
+    background: #f59e0b !important;
+    color: #ffffff !important;
+    border: 1px solid #d97706 !important;
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.4) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Comment text */
+.comment-text {
+    color: #e5e5e5 !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 8px !important;
+    word-wrap: break-word !important;
+}
+
+/* Comment actions */
+.comment-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+/* Like and reply buttons */
+.like-btn, .reply-btn {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #888 !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    font-size: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Add heart icon to like button */
+.like-btn:before {
+    content: "♡" !important;
+    font-size: 12px !important;
+    margin-right: 2px !important;
+}
+
+.like-btn.liked:before {
+    content: "♥" !important;
+    color: #ef4444 !important;
+}
+
+.like-btn:hover, .reply-btn:hover {
+    border-color: #4f46e5 !important;
+    color: #4f46e5 !important;
+}
+
+.like-btn.liked {
+    border-color: #ef4444 !important;
+    color: #ef4444 !important;
+}
+
+/* Delete button */
+.delete-comment-btn {
+    position: absolute !important;
+    right: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: transparent !important;
+    border: none !important;
+    color: #666 !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    width: 24px !important;
+    height: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.comment-item:hover .delete-comment-btn {
+    opacity: 1 !important;
+}
+
+.delete-comment-btn:hover {
+    color: #ef4444 !important;
+}
+
+/* Reply form - simple */
+.reply-form {
+    margin-top: 12px !important;
+    margin-left: 0 !important;
+    padding: 12px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 4px !important;
+}
+
+.reply-form .comment-input-row {
+    display: flex !important;
+    gap: 8px !important;
+    align-items: flex-start !important;
+}
+
+.reply-form .comment-avatar {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.reply-form .comment-input-area {
+    flex: 1 !important;
+}
+
+.reply-input {
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 4px !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    padding: 8px 10px !important;
+    resize: vertical !important;
+    min-height: 50px !important;
+    outline: none !important;
+}
+
+.reply-input:focus {
+    border-color: #4f46e5 !important;
+}
+
+.reply-form .comment-actions {
+    margin-top: 8px !important;
+    justify-content: flex-end !important;
+}
+
+.reply-submit-btn {
+    background: #4f46e5 !important;
+    border: none !important;
+    color: white !important;
+    padding: 6px 12px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
+}
+
+.cancel-comment-btn {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #888 !important;
+    padding: 6px 12px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
+}
+
+/* No comments message */
+.no-comments {
+    text-align: center !important;
+    padding: 40px 20px !important;
+    color: #666 !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    #commentsList .comment-item[data-parent-id],
+    #commentsList .comment-item.reply-comment,
+    .comment-item[data-parent-id],
+    .comment-item.reply-comment {
+        margin-left: 25px !important;
+        padding: 12px 0 !important;
+    }
+
+    /* Mobile reply arrow */
+    #commentsList .comment-item[data-parent-id]:before,
+    #commentsList .comment-item.reply-comment:before,
+    .comment-item[data-parent-id]:before,
+    .comment-item.reply-comment:before {
+        left: -15px !important;
+        top: 18px !important;
+        font-size: 12px !important;
+    }
+    
+    .comment-avatar {
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    #commentsList .comment-item[data-parent-id] .comment-avatar,
+    #commentsList .comment-item.reply-comment .comment-avatar,
+    .comment-item[data-parent-id] .comment-avatar,
+    .comment-item.reply-comment .comment-avatar {
+        width: 26px !important;
+        height: 26px !important;
+    }
+}
+
+/* SHOUTBOX ADMIN STYLING - Make admins red everywhere */
+.shout-item[data-account-type="admin"] .shout-username {
+    color: #ef4444 !important;
+}
+
+.shout-item[data-account-type="admin"] .account-type-badge {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+}
+
+/* Removed bad emergency fallback rules that affected all comments */ 
